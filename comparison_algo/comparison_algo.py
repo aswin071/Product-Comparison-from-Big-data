@@ -45,9 +45,23 @@
 
 
 
-def basic_compare(products):
+import math
+
+def sort_by_price(products):
+    """
+    Efficiently sorts products by price (min to max) for MVP.
+    - Filters available products (stock > 0).
+    - Handles missing prices by treating as worst-case (inf).
+    - Uses stable Timsort for accuracy on ties.
+    """
+    # Filter available
     available = [p for p in products if p.get('stock', 0) > 0]
     if not available:
-        return None
-    sorted_products = sorted(available, key=lambda p: p['price'])
-    return sorted_products[0]
+        return []
+    
+    # Sort by price ascending, handling missing as inf
+    sorted_products = sorted(
+        available,
+        key=lambda p: p.get('price', math.inf)
+    )
+    return sorted_products
