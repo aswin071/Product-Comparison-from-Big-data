@@ -46,7 +46,11 @@ async def search_products(query: str):
                 "name": p.get("title", "N/A"),
                 "price": p.get("price", "N/A"),
                 "rating": p.get("rating", "N/A"),
-                "stock": p.get("stock", "N/A")
+                "stock": p.get("stock", "N/A"),
+                "category" :p.get("category", "N/A"),
+                "description" : p.get("description", "N/A"),
+                "images":p.get("images", "N/A"),
+
             }
             for p in sorted_products
         ]
