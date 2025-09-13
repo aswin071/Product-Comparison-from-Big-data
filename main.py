@@ -5,12 +5,12 @@ from fastapi import FastAPI
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 
+app = FastAPI(title="Price Comparison API")
 # Allow all hosts
 app.add_middleware(
     TrustedHostMiddleware, allowed_hosts=["*"]
 )
 
-app = FastAPI(title="Price Comparison API")
 
 @app.get("/products")
 async def get_products():
