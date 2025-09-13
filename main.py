@@ -6,11 +6,28 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 
 app = FastAPI(title="Price Comparison API")
-# Allow all hosts
+Allowed hosts → only domains
 app.add_middleware(
-    TrustedHostMiddleware, allowed_hosts=["*"]
+    TrustedHostMiddleware,
+    allowed_hosts=[
+        "localhost",               # for local dev
+        "your-production-frontend.com"  # production domain
+    ]
 )
 
+# Allowed origins → full URLs with scheme + port
+origins = [
+    "http://localhost:5173",          # Vite/React local dev
+    "https://your-production-frontend.com",  # production
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/products")
 async def get_products():
