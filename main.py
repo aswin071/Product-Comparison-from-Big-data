@@ -8,14 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Price Comparison API")
 
-app.add_middleware(
-    TrustedHostMiddleware,
-    allowed_hosts=[
-        "localhost",               # for local dev
-        "your-production-frontend.com"  # production domain
-    ]
-)
-
 # Allowed origins → full URLs with scheme + port
 origins = [
     "https://your-production-frontend.com",  # production
