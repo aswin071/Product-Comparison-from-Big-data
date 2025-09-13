@@ -6,7 +6,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 
 app = FastAPI(title="Price Comparison API")
-Allowed hosts → only domains
+
 app.add_middleware(
     TrustedHostMiddleware,
     allowed_hosts=[
