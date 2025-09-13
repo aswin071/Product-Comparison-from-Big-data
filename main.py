@@ -18,7 +18,6 @@ app.add_middleware(
 
 # Allowed origins → full URLs with scheme + port
 origins = [
-    "http://localhost:5173",          # Vite/React local dev
     "https://your-production-frontend.com",  # production
 ]
 
