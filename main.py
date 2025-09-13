@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 from comparison_algo.fetch_data import fetch_dummy_products
 from comparison_algo.comparison_algo import sort_by_price
+from fastapi import FastAPI
+from starlette.middleware.trustedhost import TrustedHostMiddleware
+
+
+# Allow all hosts
+app.add_middleware(
+    TrustedHostMiddleware, allowed_hosts=["*"]
+)
 
 app = FastAPI(title="Price Comparison API")
 
