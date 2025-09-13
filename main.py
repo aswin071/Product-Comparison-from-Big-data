@@ -10,9 +10,9 @@ app = FastAPI(title="Price Comparison API")
 
 # Allowed origins → full URLs with scheme + port
 origins = [
-    "https://your-production-frontend.com",  # production
+    "http://localhost:5173",            # Vite/React dev server
+    "https://your-production-frontend.com",  # production frontend
 ]
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
